@@ -1,0 +1,10 @@
+[requires]
+Boost/1.60.0@lasote/testing
+pybind11/any@memsharded/stable
+
+[generators]
+cmake
+
+[options]
+Boost:python=True
+pybind11:version=1.8.1
