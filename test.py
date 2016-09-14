@@ -15,15 +15,15 @@ def run_module(m):
   print "\n*** RUNNING ", m.__name__, " ******"
   print "Addition:", m.add(2, 3)
 
-  print "Default name ", m.Pet().getName()
-  pet = m.Pet()
+  print "Default name ", m.Looney().getName()
+  pet = m.Looney()
   pet.setName()
   print "Default name ", pet.getName()
 
-  duffy = m.Pet("duffy")
-  print "Pet name ", duffy.getName()
+  duffy = m.Looney("duffy")
+  print "Looney name ", duffy.getName()
   duffy.setName("Duffy")
-  print "Pet name ", duffy.getName()
+  print "Looney name ", duffy.getName()
   food = m.Food()
   food.quantity = 1.2
   duffy.give(food)
@@ -33,7 +33,7 @@ def run_module(m):
   duffy.give(water)
   print "Happy ", duffy.happiness
 
-  silvester = m.Pet("Silvester")
+  silvester = m.Looney("Silvester")
   print "Average happines ", m.average([duffy, silvester])
 
   silvester.friends = ["Taz", "Bugs"]

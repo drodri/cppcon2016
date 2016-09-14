@@ -14,8 +14,8 @@ struct Food {
 struct Water {
     float amount;
 };
-struct Pet {
-    Pet(const std::string &name="Silvester") : name(name), happiness(0.0f) { }
+struct Looney {
+    Looney(const std::string &name="Silvester") : name(name), happiness(0.0f) { }
     void setName(const std::string &name_="Tweety") { name = name_; }
     const std::string &getName() const { return name; }
 
@@ -27,14 +27,14 @@ struct Pet {
     std::vector<std::string> friends;
 };
 
-float average(const std::vector<Pet>& v){
+float average(const std::vector<Looney>& v){
     return std::accumulate(std::begin(v), std::end(v), 0.0f,
-                          [](float a, Pet b) { return a + b.happiness;}) / v.size();
+                          [](float a, Looney b) { return a + b.happiness;}) / v.size();
 }
 
-std::set<std::string> collect(const std::vector<Pet>& v){
+std::set<std::string> collect(const std::vector<Looney>& v){
     std::set<std::string> result;
-    for(Pet p: v){
+    for(Looney p: v){
         result.insert(std::begin(p.friends), std::end(p.friends));
     }
     
@@ -58,16 +58,16 @@ PYBIND11_PLUGIN(pybind11_math) {
         .def(py::init<>())
         .def_readwrite("amount", &Water::amount);
 
-    py::class_<Pet>(m, "Pet")
+    py::class_<Looney>(m, "Looney")
         .def(py::init<const std::string &>(),
              py::arg("name") = std::string("Silvester"))
-        .def("setName", &Pet::setName,
+        .def("setName", &Looney::setName,
              py::arg("name") = std::string("Tweety"))
-        .def("getName", &Pet::getName)
-        .def_readwrite("happiness", &Pet::happiness)
-        .def_readwrite("friends", &Pet::friends)
-        .def("give", (void (Pet::*)(const Food&)) &Pet::give)
-        .def("give", (void (Pet::*)(const Water&)) &Pet::give);
+        .def("getName", &Looney::getName)
+        .def_readwrite("happiness", &Looney::happiness)
+        .def_readwrite("friends", &Looney::friends)
+        .def("give", (void (Looney::*)(const Food&)) &Looney::give)
+        .def("give", (void (Looney::*)(const Water&)) &Looney::give);
 
     return m.ptr();
 }
