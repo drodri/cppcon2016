@@ -1,5 +1,5 @@
 [requires]
-Boost/1.60.0@lasote/testing
+Boost/1.60.0@memsharded/testing
 pybind11/any@memsharded/stable
 
 [generators]
